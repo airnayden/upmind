@@ -19,6 +19,10 @@ How it works?
 5. On submit it checks for a valid user record, gets the secret and compares the code.
 6. Returns Welcome or Error message.
 
-PS: Edit .htaccess in order to set RewriteBase according to your configuration.
+Installation:
 
-PS2: The inial idea was to build it as an extension for the OpenCart platform, but then I decided to create it from scratch.
+1. Clone the repo
+2. Navigate to the directory in the terminal and type 'composer install'
+3. Edit .htaccess in order to set RewriteBase according to your configuration.
+
+PS: The inial idea was to build it as an extension for the OpenCart platform, but then I decided to create it from scratch.
