@@ -1,0 +1,80 @@
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <div class="card card-body bg-light text-center">
+                <strong>AIRCode 2019</strong>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3"></div>
+    </div>
+</div>
+<!--/Contents-->
+<script type="text/javascript">
+    $(document).ready(function() {
+            $('#my-form').on('submit', function(e) {
+                e.preventDefault();
+
+                var form = $(this);
+                var url = form.attr('action');
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: 'JSON',
+                    data: form.serialize(),
+                    beforeSend: function() {
+                        $('#button-submit').attr('disabled', true);
+                        $('#button-spinner').show();
+                        $('#email').attr('readonly', true);
+                        $('#label').attr('readonly', true);
+                    },
+                    success: function(data) {
+                        $('#modal-contents-qr').html(data['message']);
+                        $('#result-modal').modal();
+                        $('#button-submit').attr('disabled', false);
+                        $('#email').attr('readonly', false);
+                        $('#label').attr('readonly', false);
+                        $('#button-spinner').hide();
+
+                        $('#hidden-secret').val(data['secret']);
+                        $('#hidden-email').val($('#email').val());
+                        $('#hidden-label').val($('#label').val());
+                    }
+                });
+            })
+
+        $('#verify-form').on('submit', function(e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var url = form.attr('action');
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: 'JSON',
+                data: form.serialize(),
+                beforeSend: function() {
+                    $('#button-submit-verify').attr('disabled', true);
+                    $('#button-spinner-verify').show();
+                    $('#code').attr('readonly', true);
+                },
+                success: function(data) {
+                    if(parseInt(data['status']) > 0) {
+                        $('#modal-contents').html('<div class="alert alert-success" role="alert">' + data['message'] + '</div>');
+                    } else {
+                        $('#modal-contents').html('<div class="alert alert-danger" role="alert">' + data['message'] + '</div>');
+                    }
+
+                    $('#result-modal').modal();
+                    $('#button-submit-verify').attr('disabled', false);
+                    $('#code').attr('readonly', false);
+                    $('#button-spinner-verify').hide();
+                }
+            });
+        })
+    });
+</script>
+</body>
+</html>

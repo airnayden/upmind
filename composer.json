@@ -1,0 +1,10 @@
+{
+    "require": {
+        "robthree/twofactorauth": "^1.6",
+        "twig/twig": "^2.0",
+        "doctrine/orm": "^2.6"
+    },
+    "autoload": {
+        "psr-0": {"": "model/"}
+    }
+}

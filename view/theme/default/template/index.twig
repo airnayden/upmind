@@ -1,0 +1,53 @@
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <form action="index.php?page=generate" method="post" id="my-form">
+                <div class="form-group">
+                    <input id="email" name="email" type="email" required value="" placeholder="Email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input id="label" name="label" type="text" required value="" placeholder="Label" class="form-control"/>
+                </div>
+                <button id="button-submit" type="submit" class="btn btn-lg btn-primary">
+                    Submit
+                    <span id="button-spinner" style="display: none;" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>
+                </button>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-3"></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="result-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultModalLabel">Upmind - 2FA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                Please, scan the QR Code with your phone!<br/>
+                <div id="modal-contents-qr" class="pt-3 pb-3"></div>
+                <div id="modal-contents" class="pt-3 pb-3"></div>
+                <form action="index.php?page=verify" id="verify-form">
+                    <div class="form-group">
+                        <input type="text" id="code" required name="code" class="form-control" placeholder="Please, enter the code..."/>
+                        <input type="hidden" id="hidden-label" name="label" value=""/>
+                        <input type="hidden" id="hidden-secret" name="secret" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" required name="email" class="form-control" placeholder="Username"/>
+                    </div>
+                    <button id="button-submit-verify" type="submit" class="btn btn-lg btn-primary">
+                        Submit
+                        <span id="button-spinner-verify" style="display: none;" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
