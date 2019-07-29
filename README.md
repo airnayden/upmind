@@ -20,4 +20,5 @@ How it works?
 6. Returns Welcome or Error message.
 
 PS: Edit .htaccess in order to set RewriteBase according to your configuration.
+
 PS2: The inial idea was to build it as an extension for the OpenCart platform, but then I decided to create it from scratch.
